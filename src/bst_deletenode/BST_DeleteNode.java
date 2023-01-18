@@ -58,18 +58,18 @@ class BST_DeleteNode {
 		}
 		return minv;
 	}
-	void insert(int key) { root = insertRec(root, key); }
+	void insert(int key) { root = inOrder(root, key); }
 
-	Node insertRec(Node root, int key)
+	Node inOrder(Node root, int key)
 	{
 		if (root == null) {
 			root = new Node(key);
 			return root;
 		}
 		if (key < root.key)
-			root.left = insertRec(root.left, key);
+			root.left = inOrder(root.left, key);
 		else if (key > root.key)
-			root.right = insertRec(root.right, key);
+			root.right = inOrder(root.right, key);
 		return root;
 	}
 
@@ -93,26 +93,24 @@ class BST_DeleteNode {
 		tree.insert(60);
 		tree.insert(80);
 
-		System.out.println(
-			"Inorder traversal of the given tree");
 		tree.inorder();
 
 		System.out.println("\nDelete 20");
+                
 		tree.deleteKey(20);
-		System.out.println(
-			"Inorder traversal of the modified tree");
+                
 		tree.inorder();
 
 		System.out.println("\nDelete 30");
+                
 		tree.deleteKey(30);
-		System.out.println(
-			"Inorder traversal of the modified tree");
+                
 		tree.inorder();
 
 		System.out.println("\nDelete 50");
+                
 		tree.deleteKey(50);
-		System.out.println(
-			"Inorder traversal of the modified tree");
+                
 		tree.inorder();
 	}
 }
